@@ -5,14 +5,22 @@ stages:
 build:linux:
   stage: build
   script:
-    - godot -export_debug "Linux X11" game
+    - mkdir -p public/linux
+    - godot -export_debug "Linux X11" public/linux/game
   only:
     - master
+  artifacts:
+    paths:
+      - public
 
 build:windows:
   stage: build
   script:
-    - godot -export_debug "Windows Desktop" game.exe
+    - mkdir -p public/windows
+    - godot -export_debug "Windows Desktop" public/windows/game.exe
   only:
     - master
+  artifacts:
+    paths:
+      - public
 
